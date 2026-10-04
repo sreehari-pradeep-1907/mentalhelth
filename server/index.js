@@ -7,6 +7,9 @@ const submitRouter = require('./routes/submit');
 const app = express();
 const PORT = process.env.PORT || 3001;
 
+// ── Trust Render's reverse proxy ────────────────────────────────────────────
+app.set('trust proxy', 1);
+
 // ── Middleware ──────────────────────────────────────────────────────────────
 app.use(cors({ origin: process.env.NODE_ENV === 'production' ? false : '*' }));
 app.use(express.json({ limit: '10kb' }));
