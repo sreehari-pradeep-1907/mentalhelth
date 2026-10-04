@@ -1,9 +1,12 @@
 const fetch = require('node-fetch');
 
 async function appendToSheet(rowData) {
-    const url = process.env.GOOGLE_APPS_SCRIPT_URL;
-    if (!url) {
-        console.warn('GOOGLE_APPS_SCRIPT_URL not set — skipping sheet append.');
+    const rawUrl = process.env.GOOGLE_APPS_SCRIPT_URL;
+    // Trim whitespace and strip any accidental surrounding quotes
+    const url = rawUrl ? rawUrl.trim().replace(/^["']|["']$/g, '') : '';
+
+    if (!url || !url.startsWith('https://')) {
+        console.warn('GOOGLE_APPS_SCRIPT_URL not set or invalid — skipping sheet append. Value:', JSON.stringify(rawUrl));
         return { skipped: true };
     }
 
