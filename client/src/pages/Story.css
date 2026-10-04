@@ -1,0 +1,180 @@
+/* ── Story intro screen ─────────────────────────────────────────────────── */
+.story-intro-screen {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-bg);
+    padding: 40px 24px;
+}
+
+.story-intro-content {
+    text-align: center;
+    max-width: 520px;
+}
+
+.story-intro-title {
+    font-family: var(--font-serif);
+    font-size: clamp(2.6rem, 6vw, 4rem);
+    font-weight: 600;
+    color: var(--color-text-primary);
+    margin-bottom: 16px;
+    letter-spacing: -0.01em;
+}
+
+.story-intro-sub {
+    font-size: 1.15rem;
+    color: var(--color-text-secondary);
+    margin-bottom: 14px;
+}
+
+.story-intro-hint {
+    font-size: 0.82rem;
+    color: var(--color-text-muted);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 36px;
+}
+
+/* ── Progress header ────────────────────────────────────────────────────── */
+.story-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    background: rgba(13, 13, 15, 0.88);
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--color-border);
+}
+
+.story-header-inner {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 12px 24px;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 16px;
+}
+
+.story-chapter-label {
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    white-space: nowrap;
+}
+
+.story-chapter-sub {
+    font-size: 0.75rem;
+    color: var(--color-text-muted);
+    white-space: nowrap;
+    text-align: right;
+    max-width: 200px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* ── Story page ─────────────────────────────────────────────────────────── */
+.story-page {
+    background: var(--color-bg);
+}
+
+/* ── Chapter sections ───────────────────────────────────────────────────── */
+.story-chapter {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 120px 0 80px;
+    position: relative;
+    border-bottom: 1px solid var(--color-border);
+    transition: background 0.8s ease;
+}
+
+.story-chapter::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 60% 50% at 50% 30%,
+            hsla(var(--chapter-hue, 210), 20%, 50%, 0.04) 0%,
+            transparent 70%);
+    pointer-events: none;
+}
+
+.story-chapter--active .story-chapter-tag,
+.story-chapter--active .story-chapter-title,
+.story-chapter--active .story-para {
+    animation: fadeInUp 0.6s ease both;
+}
+
+.story-chapter-inner {
+    max-width: 660px !important;
+}
+
+.story-chapter-tag {
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    margin-bottom: 20px;
+}
+
+.story-chapter-title {
+    font-family: var(--font-serif);
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    font-weight: 600;
+    color: var(--color-text-primary);
+    margin-bottom: 36px;
+    line-height: 1.15;
+}
+
+.story-chapter-body {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.story-para {
+    font-size: clamp(1rem, 2vw, 1.14rem);
+    color: var(--color-text-secondary);
+    line-height: 1.85;
+    font-weight: 300;
+}
+
+/* ── Final CTA ──────────────────────────────────────────────────────────── */
+.story-final-cta {
+    margin-top: 60px;
+    text-align: center;
+}
+
+.story-final-rule {
+    width: 60px;
+    height: 1px;
+    background: var(--color-border);
+    margin: 0 auto 28px;
+}
+
+.story-final-prompt {
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
+    margin-bottom: 20px;
+}
+
+@media (max-width: 600px) {
+    .story-header-inner {
+        grid-template-columns: auto 1fr;
+        gap: 10px;
+    }
+
+    .story-chapter-sub {
+        display: none;
+    }
+
+    .story-chapter {
+        padding: 100px 0 60px;
+    }
+}
